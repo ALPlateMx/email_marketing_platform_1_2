@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Workana MailHub - Plataforma de Email Marketing</title>
+  <link rel="stylesheet" href="css/app.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <div class="app-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="brand">
+        <img src="./public/logo workana.png" alt="Workana Logo" style="width: 140px; margin-bottom: 5px; display: block;">
+        <div>
+          <h2>MailHub</h2>
+          <span>Marketing & Campaign Suite</span>
+        </div>
+      </div>
+
+      <nav class="nav-menu">
+        <a href="#campaigns" class="nav-link active"><i class="fa-solid fa-envelope-open-text"></i> Lanzar Campaña</a>
+        <a href="#history" class="nav-link"><i class="fa-solid fa-clock-rotate-left"></i> Historial de Envíos</a>
+        <a href="#settings" class="nav-link"><i class="fa-solid fa-sliders"></i> Servidor SMTP</a>
+      </nav>
+
+      <div class="sidebar-status">
+        <div class="status-indicator online"></div>
+        <div class="status-text">
+          <small>Servidor Activo</small>
+          <strong>Modo Híbrido (SMTP / Sandbox)</strong>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="topbar">
+        <h1>Gestión y Envío de Campañas</h1>
+        <div class="user-pill">
+          <i class="fa-solid fa-circle-user"></i>
+          <span>Administrador</span>
+        </div>
+      </header>
+
+      <div class="content-body">
+        <div class="campaign-grid">
+          <!-- Columna Izquierda: Formulario de Campaña -->
+          <section class="card config-panel">
+            <h2 class="section-title"><i class="fa-solid fa-gears"></i> Parámetros de la Campaña</h2>
+
+            <form id="campaignForm">
+              <!-- Selección de Template -->
+              <div class="form-group">
+                <label for="templateSelect"><i class="fa-solid fa-file-code"></i> Plantilla de Correo</label>
+                <select id="templateSelect" class="form-control" required>
+                  <option value="email1">Email 1 - Bienvenida & Primer Trabajo Remoto</option>
+                  <option value="email2">Email 2 - Seminario Web & Habilidades</option>
+                </select>
+              </div>
+
+              <!-- Asunto del Correo -->
+              <div class="form-group">
+                <label for="emailSubject"><i class="fa-solid fa-heading"></i> Asunto del Correo (Subject)</label>
+                <input type="text" id="emailSubject" class="form-control" value="¡Te damos la bienvenida nuevamente a Workana!" required>
+              </div>
+
+              <!-- Variable {nombre} para vista previa / prueba -->
+              <div class="form-group">
+                <label for="recipientName"><i class="fa-solid fa-user-tag"></i> Nombre dinámico para la etiqueta {nombre}</label>
+                <input type="text" id="recipientName" class="form-control" value="Carlos Mendoza" placeholder="Ej. Carlos Mendoza">
+              </div>
+
+              <!-- Lista de Destinatarios -->
+              <div class="form-group">
+                <label for="recipientsInput"><i class="fa-solid fa-users"></i> Lista de Destinatarios (un correo por línea)</label>
+                <textarea id="recipientsInput" rows="5" class="form-control" placeholder="juan@ejemplo.com&#10;maria@empresa.com" required>talento1@workana-demo.com
+talento2@workana-demo.com
+talento3@workana-demo.com</textarea>
+                <small class="hint">Puedes pegar una lista de correos separados por saltos de línea.</small>
+              </div>
+
+              <!-- Switch Modo Simulación / Envío Real -->
+              <div class="form-group checkbox-group">
+                <label class="switch-label">
+                  <input type="checkbox" id="simulateCheck" checked>
+                  <span><strong>Modo Seguro / Sandbox</strong> (Simula el envío sin gastar cuota SMTP real)</span>
+                </label>
+              </div>
+
+              <!-- Botones de Acción -->
+              <div class="form-actions">
+                <button type="button" id="refreshPreviewBtn" class="btn btn-secondary">
+                  <i class="fa-solid fa-arrows-rotate"></i> Actualizar Vista Previa
+                </button>
+                <button type="submit" id="sendBtn" class="btn btn-primary">
+                  <i class="fa-solid fa-paper-plane"></i> Despachar Campaña
+                </button>
+              </div>
+            </form>
+          </section>
+
+          <!-- Columna Derecha: Vista Previa en Tiempo Real -->
+          <section class="card preview-panel">
+            <div class="preview-header">
+              <h2 class="section-title"><i class="fa-solid fa-display"></i> Vista Previa en Vivo</h2>
+              <div class="device-toggles">
+                <button class="device-btn active" data-width="100%"><i class="fa-solid fa-laptop"></i> Desktop</button>
+                <button class="device-btn" data-width="375px"><i class="fa-solid fa-mobile-screen"></i> Móvil</button>
+              </div>
+            </div>
+
+            <div class="iframe-container">
+              <iframe id="emailPreviewFrame" title="Vista Previa de Correo" src="/api/templates/email1/preview?name=Carlos%20Mendoza"></iframe>
+            </div>
+          </section>
+        </div>
+
+        <!-- Historial y Métricas de Envíos -->
+        <section class="card history-section" style="margin-top: 24px;">
+          <div class="history-header">
+            <h2 class="section-title"><i class="fa-solid fa-list-check"></i> Registro de Envíos Recientes</h2>
+            <button id="clearLogsBtn" class="btn btn-small btn-outline"><i class="fa-solid fa-trash-can"></i> Limpiar</button>
+          </div>
+          
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Fecha / Hora</th>
+                  <th>Destinatario</th>
+                  <th>Campaña</th>
+                  <th>Asunto</th>
+                  <th>Estado</th>
+                </tr>
+              </thead>
+              <tbody id="logsTableBody">
+                <tr class="empty-row">
+                  <td colspan="5">No se han realizado envíos en esta sesión.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <div id="toast" class="toast"></div>
+  <script src="js/app.js"></script>
+</body>
+</html>

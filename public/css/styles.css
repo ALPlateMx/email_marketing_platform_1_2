@@ -1,0 +1,144 @@
+/* Paleta y configuración base */
+:root {
+  --primary-color: #0077c5;
+  --primary-dark: #005f9e;
+  --text-main: #333333;
+  --text-muted: #666666;
+  --bg-page: #f4f6f8;
+  --bg-card: #ffffff;
+  --border-color: #e5e9ed;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-page);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+table {
+  border-spacing: 0;
+}
+
+td {
+  padding: 0;
+}
+
+img {
+  border: 0;
+}
+
+.wrapper {
+  width: 100%;
+  table-layout: fixed;
+  background-color: var(--bg-page);
+  padding: 40px 10px;
+}
+
+.main-card {
+  background-color: var(--bg-card);
+  margin: 0 auto;
+  width: 100%;
+  max-width: 600px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--border-color);
+}
+
+.header {
+  padding: 32px 40px 20px 40px;
+  border-bottom: 2px solid #f0f4f8;
+}
+
+.logo-text {
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: var(--primary-color);
+  text-transform: lowercase;
+  text-decoration: none;
+}
+
+.content {
+  padding: 32px 40px;
+}
+
+.greeting {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.highlight-box {
+  background-color: #f0f7fd;
+  border-left: 4px solid var(--primary-color);
+  padding: 14px 18px;
+  margin: 20px 0;
+  border-radius: 0 4px 4px 0;
+}
+
+.highlight-box p {
+  margin: 0;
+  font-weight: 600;
+  color: #1a5276;
+}
+
+p {
+  font-size: 15px;
+  color: #4a5568;
+  margin-bottom: 16px;
+}
+
+.btn-container {
+  padding: 24px 0 10px 0;
+  text-align: center;
+}
+
+.btn {
+  display: inline-block;
+  background-color: var(--primary-color);
+  color: #ffffff !important;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 14px 32px;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.btn:hover {
+  background-color: var(--primary-dark);
+}
+
+.footer {
+  padding: 24px 40px;
+  background-color: #fafbfc;
+  border-top: 1px solid var(--border-color);
+}
+
+.signoff {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.4;
+  margin: 0;
+}
+
+.signoff strong {
+  color: var(--text-main);
+}
+
+@media only screen and (max-width: 600px) {
+  .header, .content, .footer {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+  .btn {
+    display: block !important;
+    text-align: center;
+  }
+}

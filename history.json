@@ -1,0 +1,56 @@
+[
+  {
+    "timestamp": "2026-09-23T20:04:10.974488",
+    "name": "Israel Gaona Rojas",
+    "recipient": "igaona2013@gmail.com",
+    "templateId": "email1",
+    "subject": "¡Te damos la bienvenida nuevamente a Workana!",
+    "status": "Enviado",
+    "simulated": false
+  },
+  {
+    "timestamp": "2026-09-23T20:04:03.644733",
+    "name": "Israel Gaona Rojas",
+    "recipient": "igaona2013@gmail.com",
+    "templateId": "email1",
+    "subject": "¡Te damos la bienvenida nuevamente a Workana!",
+    "status": "Simulado (OK)",
+    "simulated": true
+  },
+  {
+    "timestamp": "2026-09-23T20:02:14.935444",
+    "name": "Israel Gaona Rojas",
+    "recipient": "igaona2020@gmail.com",
+    "templateId": "email1",
+    "subject": "¡Te damos la bienvenida nuevamente a Workana!",
+    "status": "Simulado (OK)",
+    "simulated": true
+  },
+  {
+    "timestamp": "2026-09-23T19:23:55.933290",
+    "name": "Carlos Mendoza",
+    "recipient": "talento1@workana-demo.com",
+    "templateId": "email2",
+    "subject": "Oportunidad exclusiva: Seminario Web \"Gana dinero trabajando remoto y en Workana\"",
+    "status": "Simulado (OK)",
+    "simulated": true
+  },
+  {
+    "timestamp": "2026-09-23T19:23:55.933513",
+    "name": "Carlos Mendoza",
+    "recipient": "talento2@workana-demo.com",
+    "templateId": "email2",
+    "subject": "Oportunidad exclusiva: Seminario Web \"Gana dinero trabajando remoto y en Workana\"",
+    "status": "Simulado (OK)",
+    "simulated": true
+  },
+  {
+    "timestamp": "2026-09-23T19:23:55.933536",
+    "name": "Carlos Mendoza",
+    "recipient": "talento3@workana-demo.com",
+    "templateId": "email2",
+    "subject": "Oportunidad exclusiva: Seminario Web \"Gana dinero trabajando remoto y en Workana\"",
+    "status": "Simulado (OK)",
+    "simulated": true
+  }
+]
